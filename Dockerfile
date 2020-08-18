@@ -7,7 +7,7 @@ RUN useradd -m chromium \
     && chown -R chromium:chromium /chromium
 
 RUN apt update \
-    && apt -y install python git lsb-release sudo python-pkg-resources \
+    && apt -y install python git curl lsb-release sudo python-pkg-resources \
     && apt clean \
     && curl -s https://chromium.googlesource.com/chromium/src/+/master/build/install-build-deps.sh | /bin/bash -s \
     && cd /chromium \
