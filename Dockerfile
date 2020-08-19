@@ -7,10 +7,10 @@ RUN useradd -m chromium \
     && chown -R chromium:chromium /chromium
 
 RUN apt update \
-    && apt -y install python git curl lsb-release sudo python-pkg-resources \
-    && apt clean \
-    && /bin/bash -s <(curl -s https://raw.githubusercontent.com/chromium/chromium/master/build/install-build-deps.sh) <(echo -e "12\n10") \
-    #&& curl -s https://raw.githubusercontent.com/chromium/chromium/master/build/install-build-deps.sh | /bin/bash -s <(echo -e "12\n10") \
+    && apt-get -y install python git curl lsb-release sudo python-pkg-resources \
+    && apt-get clean \
+    #&& /bin/bash -s <(curl -s https://raw.githubusercontent.com/chromium/chromium/master/build/install-build-deps.sh) <(echo -e "12\n10") \
+    && curl -s https://raw.githubusercontent.com/chromium/chromium/master/build/install-build-deps.sh | /bin/bash -s <(echo -e "12\n10") \
     && cd /chromium \
     && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
     && gclient runhooks
