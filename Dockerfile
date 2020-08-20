@@ -13,7 +13,9 @@ RUN apt update \
 RUN locale-gen "en_US.UTF-8" \
     && dpkg-reconfigure locales
 
-RUN (curl -s https://raw.githubusercontent.com/chromium/chromium/master/build/install-build-deps.sh | /bin/bash -s) <(echo -e "12\n10") \
+RUN curl -s https://raw.githubusercontent.com/chromium/chromium/master/build/install-build-deps.sh --output /tmp/install-build-deps.sh \
+    && chmod +x /tmp/install-build-deps.sh \
+    && /tmp/install-build-deps.sh <(echo -e "12\n10") \
     && cd /chromium \
     && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
     && gclient runhooks
