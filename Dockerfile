@@ -19,10 +19,7 @@ RUN locale-gen "en_US.UTF-8" \
 
 RUN curl -s https://raw.githubusercontent.com/chromium/chromium/master/build/install-build-deps.sh --output /tmp/install-build-deps.sh \
     && chmod +x /tmp/install-build-deps.sh \
-    && /tmp/install-build-deps.sh --no-chromeos-fonts \
-    && cd /chromium \
-    && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
-    && gclient runhooks
+    && /tmp/install-build-deps.sh --no-chromeos-fonts
 
 WORKDIR /chromium
 VOLUME /chromium
